@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Restaurante.Cuenta>
+
+<h1>getCuentas</h1>
+
+<p>
+    <a asp-action="CrearCuenta">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_Cuenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Cuenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido_Cuenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password_Cuenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo_Cuenta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_Cuenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Cuenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido_Cuenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password_Cuenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo_Cuenta)
+            </td>
+            <td>
+
+                @using (Html.BeginForm("DeleteCuenta", "Administrador",new { id = item.id_Cuenta }))
+                {
+                    @Html.Hidden("id", item.id_Cuenta)
+                    <input type="submit" value="Delete" />
+                }
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

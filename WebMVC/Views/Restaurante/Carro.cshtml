@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Restaurante.Carro>
+
+@{
+    ViewData["Title"] = "Carro";
+}
+
+<h1>Carro</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idLPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idPlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioProductoUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioTotal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idLPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idPlato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioProductoUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioTotal)
+            </td>
+            <td>
+                @using (Html.BeginForm("AumentarCarro", "Restaurante",new { id = item.idLPedido }))
+                {
+                    @Html.Hidden("id", item.idLPedido)
+                    <input type="submit" value="Incrementar" />
+                }
+                @using (Html.BeginForm("DecrementarCarro", "Restaurante",new { id = item.idLPedido }))
+                {
+                    @Html.Hidden("ProductID", item.idLPedido)
+                    <input type="submit" value="Decrementar" />
+                }
+                @using (Html.BeginForm("DeleteCarro", "Restaurante",new { id = item.idLPedido }))
+                {
+                    @Html.Hidden("ProductID", item.idLPedido)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form asp-controller="Restaurante" asp-action="CrearPedido" method="get">
+    <button class="btb btb-primary btn-lg"> Pedido </button>
+
+</form>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Restaurante.Plato>
+
+@{
+    ViewData["Title"] = "Platos";
+}
+
+<h1>Platos</h1>
+
+<p>
+    <a asp-action="CreatePlato">Create Plato</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionPlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioBase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPlato)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePlato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionPlato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioBase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPlato)
+            </td>
+            <td>
+
+                @using (Html.BeginForm("DeletePlato", "Administrador",new { idPlato = item.IdProducto }))
+                {
+                    @Html.Hidden("idPlato", item.IdProducto)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

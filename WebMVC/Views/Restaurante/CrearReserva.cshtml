@@ -1,0 +1,45 @@
+﻿@model WebMVC.DTOS.DTOReserva
+
+@{
+    ViewData["Title"] = "CrearReserva";
+}
+
+<h1>CrearReserva</h1>
+
+<h4>DTOReserva</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CrearReserva">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="reservaNombre" class="control-label"></label>
+                <input asp-for="reservaNombre" class="form-control" />
+                <span asp-validation-for="reservaNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="reservaTelefono" class="control-label"></label>
+                <input asp-for="reservaTelefono" class="form-control" />
+                <span asp-validation-for="reservaTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="reservaDate" class="control-label"></label>
+                <input asp-for="reservaDate" class="form-control" />
+                <span asp-validation-for="reservaDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="reservaTime" class="control-label"></label>
+                <input asp-for="reservaTime" class="form-control" />
+                <span asp-validation-for="reservaTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

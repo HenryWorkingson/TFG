@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Restaurante.Pedido>
+
+@{
+    ViewData["Title"] = "Pedidos";
+}
+
+<h1>Pedidos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion_Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio_Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_Pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion_Pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarjeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio_Total)
+            </td>
+            <td>
+
+                @using (Html.BeginForm("DeletePedido", "Administrador",new { id = item.id_Pedido }))
+                {
+                    @Html.Hidden("id", item.id_Pedido)
+                    <input type="submit" value="Delete" />
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

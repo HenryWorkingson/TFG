@@ -1,0 +1,39 @@
+﻿<h1> This is Admnistrador Index.cshtml Page </h1>
+
+
+<form asp-controller="Auth" asp-action="Logout" method="post">
+    <button class="btb btb-primary btn-lg"> Logout </button>
+
+</form>
+
+<a asp-action="Login">Login</a>
+<br />
+<a asp-controller= "Students" uiactions="Index">Administrador Page </a>
+
+
+<form asp-controller="Administrador" asp-action="Platos" method="get">
+    <button class="btb btb-primary btn-lg"> Plato </button>
+
+</form>
+
+<form asp-controller="Administrador" asp-action="Tarjetas" method="get">
+    <button class="btb btb-primary btn-lg"> Tarjeta </button>
+
+</form>
+<form asp-controller="Administrador" asp-action="Direcciones" method="get">
+    <button class="btb btb-primary btn-lg"> Direccion </button>
+
+</form>
+<form asp-controller="Administrador" asp-action="Pedidos" method="get">
+    <button class="btb btb-primary btn-lg"> Pedidos </button>
+
+</form>
+
+<form asp-controller="Administrador" asp-action="LineaPedidos" method="get">
+    <button class="btb btb-primary btn-lg"> LineaPedidos </button>
+
+</form>
+<form asp-controller="Administrador" asp-action="getCuentas" method="get">
+    <button class="btb btb-primary btn-lg"> Cuentas </button>
+
+</form>

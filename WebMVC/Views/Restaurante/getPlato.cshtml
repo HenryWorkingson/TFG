@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Restaurante.Plato>
+
+@{
+    ViewData["Title"] = "getPlato";
+}
+
+<h1>getPlato</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombrePlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionPlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioBase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoPlato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombrePlato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionPlato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioBase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoPlato)
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <td>
+                
+                @using (Html.BeginForm("AddCarro", "Restaurante",new { idProducto = item.IdProducto }))
+                {
+                    @Html.Hidden("ProductID", item.IdProducto)
+                    <input type="submit" value="Add" />
+                }
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

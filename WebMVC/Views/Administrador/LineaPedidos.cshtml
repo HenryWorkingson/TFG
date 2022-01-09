@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Restaurante.LineaPedido>
+
+@{
+    ViewData["Title"] = "LineaPedidos";
+}
+
+<h1>LineaPedidos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_LineaPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_Plato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id_Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioProductoUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioTotal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_LineaPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_Plato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_Pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioProductoUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioTotal)
+            </td>
+            <td>
+
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

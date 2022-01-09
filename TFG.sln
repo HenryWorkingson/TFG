@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Restaurante", "Restaurante\Restaurante.csproj", "{374D9DC4-9E29-49C5-A748-0F0ED61AEEB6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swagger", "Swagger\Swagger.csproj", "{382E586A-CB43-46CC-AB73-76A8D0658119}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebMVC", "WebMVC\WebMVC.csproj", "{F2328167-1C9A-4CF9-BF4B-6F16155F6349}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{374D9DC4-9E29-49C5-A748-0F0ED61AEEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{374D9DC4-9E29-49C5-A748-0F0ED61AEEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{374D9DC4-9E29-49C5-A748-0F0ED61AEEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{374D9DC4-9E29-49C5-A748-0F0ED61AEEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382E586A-CB43-46CC-AB73-76A8D0658119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382E586A-CB43-46CC-AB73-76A8D0658119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382E586A-CB43-46CC-AB73-76A8D0658119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382E586A-CB43-46CC-AB73-76A8D0658119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2328167-1C9A-4CF9-BF4B-6F16155F6349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2328167-1C9A-4CF9-BF4B-6F16155F6349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2328167-1C9A-4CF9-BF4B-6F16155F6349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2328167-1C9A-4CF9-BF4B-6F16155F6349}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD4E56F4-D0A1-4A28-8092-6D18400DCE06}
+	EndGlobalSection
+EndGlobal
