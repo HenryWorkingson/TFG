@@ -81,7 +81,7 @@ namespace WebMVC.Controllers
         public IActionResult DeletePedido(int id)
         {
             global::Restaurante.Pedido p = db.Pedidos.Find(id);
-            if (p != null)
+            if (p != null && p.Id_Direccion != 0 && p.Tarjeta != 0)
             {
                 global::Restaurante.Direccion_Envio dir = db.DireccionEnvios.Find(p.Id_Direccion);
                 db.DireccionEnvios.Remove(dir);
@@ -98,6 +98,12 @@ namespace WebMVC.Controllers
                 db.Pedidos.Remove(p);
                 db.SaveChanges();
             }
+            else
+            {
+                db.Pedidos.Remove(p);
+                db.SaveChanges();
+            }
+
             return Ok(200);
         }
         //--------------------------------------------Tarjetas----------------------------------------------------
@@ -128,7 +134,7 @@ namespace WebMVC.Controllers
         }
         [HttpGet]
         [Route("Admin/LineaPed/{idPlato:int}")]
-        public async Task<IActionResult> LineaPed(int idPlato)
+        public IActionResult LineaPed(int idPlato)
         {
             
             var pedido = db.Pedidos.Find(idPlato);
@@ -136,27 +142,44 @@ namespace WebMVC.Controllers
             var query = from cust in linea where cust.id_Pedido == idPlato select cust;
 
             List<DTOLPedidoAngular> list = new List<DTOLPedidoAngular>();
-
-            foreach (var q in query)
-            {
-
-                var plato = db.Platos.Find(q.id_Plato);
-                var direccion = db.DireccionEnvios.Find(pedido.Id_Direccion);
-                DTOLPedidoAngular mi = new DTOLPedidoAngular()
+            if(pedido.Id_Direccion!=0)
+                foreach (var q in query)
                 {
-                    id_LineaPedido = q.id_LineaPedido,
-                    nombrePlato = plato.NombrePlato,
-                    direccionEnvio = direccion.Nombre_Direccion,
-                    municipio = direccion.Municipal,
-                    provincia = direccion.Provincia,
-                    cantidad = q.Cantidad,
-                    precioUnitario = q.PrecioProductoUnitario,
-                    precioTotal = q.PrecioTotal,
-                    descripPlato = plato.DescripcionPlato,
-                };
-                list.Add(mi);
-            }
-            await db.SaveChangesAsync();
+
+                    var plato = db.Platos.Find(q.id_Plato);
+                    var direccion = db.DireccionEnvios.Find(pedido.Id_Direccion);
+                    DTOLPedidoAngular mi = new DTOLPedidoAngular()
+                    {
+                        id_LineaPedido = q.id_LineaPedido,
+                        nombrePlato = plato.NombrePlato,
+                        direccionEnvio = direccion.Nombre_Direccion,
+                        municipio = direccion.Municipal,
+                        provincia = direccion.Provincia,
+                        cantidad = q.Cantidad,
+                        precioUnitario = q.PrecioProductoUnitario,
+                        precioTotal = q.PrecioTotal,
+                        descripPlato = plato.DescripcionPlato,
+                    };
+                    list.Add(mi);
+                }
+            else
+                foreach (var q in query)
+                {
+
+                    var plato = db.Platos.Find(q.id_Plato);
+                   
+                    DTOLPedidoAngular mi = new DTOLPedidoAngular()
+                    {
+                        id_LineaPedido = q.id_LineaPedido,
+                        nombrePlato = plato.NombrePlato,  
+                        cantidad = q.Cantidad,
+                        precioUnitario = q.PrecioProductoUnitario,
+                        precioTotal = q.PrecioTotal,
+                        descripPlato = plato.DescripcionPlato,
+                    };
+                    list.Add(mi);
+                }
+
 
             return Ok(list);
         }
@@ -220,7 +243,7 @@ namespace WebMVC.Controllers
             return Ok(q);
         }
         [HttpDelete]
-        [Route("Admin/DeleteReserva({idPlato:int}")]
+        [Route("Admin/DeleteReserva/{idPlato:int}")]
         public IActionResult DeleteReserva(int idPlato)
         {
             global::Restaurante.Reserva p = db.Reservas.Find(idPlato);
