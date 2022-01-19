@@ -81,12 +81,18 @@ namespace WebMVC.Controllers
         public IActionResult DeletePedido(int id)
         {
             global::Restaurante.Pedido p = db.Pedidos.Find(id);
-            if (p != null && p.Id_Direccion != 0 && p.Tarjeta != 0)
+            if (p != null)
             {
-                global::Restaurante.Direccion_Envio dir = db.DireccionEnvios.Find(p.Id_Direccion);
-                db.DireccionEnvios.Remove(dir);
-                global::Restaurante.Tarjeta tar = db.Tarjetas.Find(p.Id_Direccion);
-                db.Tarjetas.Remove(tar);
+                if (p.Id_Direccion != 0)
+                {
+                    global::Restaurante.Direccion_Envio dir = db.DireccionEnvios.Find(p.Id_Direccion);
+                    db.DireccionEnvios.Remove(dir);
+                }
+                if (p.Tarjeta != 0) {
+                    global::Restaurante.Tarjeta tar = db.Tarjetas.Find(p.Tarjeta);
+                    db.Tarjetas.Remove(tar);
+                }
+               
 
                 var q = db.LineaPedidos.Select(u => u).ToList();
                 foreach (var a in q)

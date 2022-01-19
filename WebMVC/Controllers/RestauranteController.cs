@@ -34,10 +34,9 @@ namespace WebMVC.Controllers
         [Route("Restaurante/GetLineaPedido/")]
         public async Task<IActionResult> Pedido()
         {
-            var num = db.Pedidos.Count();
-            var pedido = db.Pedidos.Find(num);
+            var num = db.Pedidos.ToArray().Last();
             var linea =db.LineaPedidos.ToList();
-            var query =from cust in linea where cust.id_Pedido == num select cust;
+            var query =from cust in linea where cust.id_Pedido == num.id_Pedido select cust;
  
 
 
@@ -47,7 +46,7 @@ namespace WebMVC.Controllers
             {
                 
                 var plato=db.Platos.Find(q.id_Plato);
-                var direccion = db.DireccionEnvios.Find(pedido.Id_Direccion);
+                var direccion = db.DireccionEnvios.Find(num.Id_Direccion);
                 DTOLPedidoAngular mi = new DTOLPedidoAngular()
                 {
                     id_LineaPedido = q.id_LineaPedido,
